@@ -17,12 +17,12 @@ if uploaded_file:
 
     st.image(temp_path, caption="Uploaded Shelf Image", use_container_width=True)
 
-    st.subheader("📦 Detected Products:")
+    st.subheader("Detected Products:")
     df, result = detect_objects(temp_path)
 
     if not df.empty:
         st.dataframe(df[["name", "confidence"]])
-        st.success(f"✅ Total Detected: {len(df)}")
+        st.success(f" Total Detected: {len(df)}")
 
         # Annotate and save the image with bounding boxes
         annotated_img = result.plot()  # BGR image array
@@ -32,4 +32,4 @@ if uploaded_file:
         # Display the annotated image
         st.image(output_path, caption="Detected Products", use_container_width=True)
     else:
-        st.warning("⚠️ No products detected. Try another image.")
+        st.warning(" No products detected. Try another image.")
